@@ -1,0 +1,30 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.blur {
+    filter: blur(4px);
+}
+
+@media screen and (min-width:850px) {
+    .card-container {
+        margin-top: 130px;
+    }
+}
+
+@media screen and (max-width:850px) {
+    .card-container {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .card-container {
+        margin-top: 135px;
+    }
+}

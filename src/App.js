@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Body from './components/Body';
+import Modal from './components/Modal';
+import { useNavigate, Routes, Route } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate()
+  useEffect(() => {
+    navigate('/')
+  }, [navigate])
+  const [showModal, setShowModal] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div onClick={() => showModal ? setShowModal(false) : null}>
+      <Navbar />
+      <Routes>
+        <Route path='/*' element={<Body modalSetter={() => setShowModal(true)} showModal={showModal} />} />
+      </Routes>
+      <Modal showModal={showModal} closeModal={() => setShowModal(false)} />
     </div>
   );
 }
